@@ -10,6 +10,9 @@ https://gitforwindows.org/
 
 git clone https://github.com/abhimkdm/NotesApp.git
 
+## Pull Latest Application 
+git pull
+
 ## Setup Application
 
 Run `npm install` it will load basic necessary packages into the project, All the packages will be loaded int node_modules
