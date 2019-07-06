@@ -3,14 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Examples/login/login.component';
-import { SingupComponent } from './Examples/singup/singup.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    SingupComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule
