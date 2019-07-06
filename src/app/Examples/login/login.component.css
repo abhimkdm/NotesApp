@@ -1,0 +1,48 @@
+p {
+    color: tomato;
+    font-size: 50px;
+}
+
+#wrapper{
+    background-color: darkcyan;
+    border: 1px solid green;
+    border-radius: 10px;
+    width: 25%;
+    color: white;
+    padding: 20px 40px;
+    margin: auto;
+}
+input[type=text], input[type=password], input[type=email] {
+    border-radius: 20px;
+    border: 1px solid lightblue;
+    width: 100%; 
+    padding: 10px 20px;
+    margin: 8px 0px;
+}
+
+button {
+    background-color: rgb(96, 234, 149);
+    border-radius: 5px;
+    width: 50%;
+    padding: 10px 10px;
+    color: white;
+    font-family: monospace;
+    font-size: 20px;
+    border: 1px solid greenyellow;
+}
+
+input[type=button] {
+    background-color: rgb(96, 234, 149);
+    border-radius: 5px;
+    width: 50%;
+    padding: 10px 10px;
+    color: white;
+    font-family: monospace;
+    font-size: 20px;
+    border: 1px solid greenyellow;
+}
+
+
+label {
+    font-weight: bolder;
+}
