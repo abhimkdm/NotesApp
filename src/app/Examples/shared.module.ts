@@ -5,21 +5,25 @@ import { DemoComponent } from './demo/demo.component';
 import { StucturalComponent } from './stuctural/stuctural.component';
 import { DirectivesComponent } from './directives/directives.component';
 import { HighlightDirective } from './directives/highlight.directive';
+import { BindingsComponent } from '../Examples/bindings/bindings.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   declarations: [
     LoginComponent,
     DemoComponent,
     StucturalComponent,
     DirectivesComponent,
-    HighlightDirective
+    HighlightDirective,
+    BindingsComponent
   ],
   exports: [
-    DemoComponent,
-    StucturalComponent
+    StucturalComponent,
+    BindingsComponent
   ]
 })
 export class SharedModule { }

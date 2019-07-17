@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Notes Application';
+  show : boolean = true;
+  hide : boolean = false;
 }
