@@ -1,0 +1,15 @@
+<h1>Pipes </h1>
+<hr>
+<fieldset>
+    <legend>Built-In Pipes</legend>
+    <h2> UpperCase Pipe : {{text | uppercase}} </h2>
+    <h2> Lowercase Pipe : {{text | lowercase}} </h2>
+    <h2> Curreny Pipe : {{ '2000.0' | currency : 'USD'}} </h2>
+    <h2> Date Format Pipe : {{'7/18/2019' | date : 'd/M/y'}}</h2>
+</fieldset>
+
+<br>
+<fieldset>
+    <legend>Custom Pipes</legend>
+    <h2> Custom Pipe : {{ text | reverse : 'something'}} </h2>
+</fieldset>

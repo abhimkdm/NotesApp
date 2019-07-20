@@ -7,6 +7,9 @@ import { DirectivesComponent } from './directives/directives.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { BindingsComponent } from '../Examples/bindings/bindings.component';
 import { FormsModule } from '@angular/forms';
+import { PipeComponent } from '../Examples/pipe/pipe.component';
+import { ReversePipe } from './pipe/reverse.pipe';
+import { BootstrapComponent } from '../Examples/bootstrap/bootstrap.component';
 
 @NgModule({
   imports: [
@@ -19,11 +22,17 @@ import { FormsModule } from '@angular/forms';
     StucturalComponent,
     DirectivesComponent,
     HighlightDirective,
-    BindingsComponent
+    BindingsComponent,
+    PipeComponent,
+    ReversePipe,
+    BootstrapComponent
   ],
   exports: [
     StucturalComponent,
-    BindingsComponent
+    BindingsComponent,
+    PipeComponent,
+    ReversePipe,
+    BootstrapComponent
   ]
 })
 export class SharedModule { }
