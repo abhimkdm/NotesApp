@@ -1,0 +1,250 @@
+<div class="row">
+  <div class="col-sm-10">
+    <input type="search" id="container-search" value="" class="form-control form-control-lg" placeholder="Search notes... ">
+  </div>
+  <div class="col-sm-2">
+    <button type="button" class="btn btn-info btn-lg btn-block" data-toggle="modal" data-target="#addModel">
+      Add
+    </button>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-header">Five Point Someone</div>
+      <div class="card-body text-info">Nice book by Chetan Bhagat</div>
+      <div class="card-footer">
+        <div class="float-left">
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star"></span>
+        </div>
+        <div class="float-right">
+          <i class="fa fa-pencil pr-1" data-toggle="modal" data-target="#editModel"></i>
+      
+          <i class="fa fa-trash" data-toggle="modal" data-target="#deleteModel"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-header">3 Mistakes of my life</div>
+      <div class="card-body h-1000 text-info">Nice book by Chetan Bhagat</div>
+      <div class="card-footer">
+        <div class="float-left">
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star"></span>
+        </div>
+        <div class="float-right">
+          <i class="fa fa-pencil pr-1" data-toggle="modal" data-target="#editModel"></i>
+          <i class="fa fa-trash" data-toggle="modal" data-target="#deleteModel"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-header">Revolution 2020</div>
+      <div class="card-body text-info">Nice book by Chetan Bhagat</div>
+      <div class="card-footer">
+        <div class="float-left">
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star"></span>
+        </div>
+        <div class="float-right">
+          <i class="fa fa-pencil pr-1" data-toggle="modal" data-target="#editModel"></i>
+          <i class="fa fa-trash" data-toggle="modal" data-target="#deleteModel"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-header">Half Girlfriend</div>
+      <div class="card-body text-info">Nice book by Chetan Bhagat</div>
+      <div class="card-footer">
+        <div class="float-left">
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star"></span>
+        </div>
+        <div class="float-right">
+          <i class="fa fa-pencil pr-1" data-toggle="modal" data-target="#editModel"></i>
+          <i class="fa fa-trash" data-toggle="modal" data-target="#deleteModel"></i>
+        </div>
+      </div>
+  </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-header">2 States</div>
+      <div class="card-body text-info">Nice book by Chetan Bhagat</div>
+      <div class="card-footer">
+        <div class="float-left">
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star"></span>
+        </div>
+        <div class="float-right">
+          <i class="fa fa-pencil pr-1" data-toggle="modal" data-target="#editModel"></i>
+          <i class="fa fa-trash" data-toggle="modal" data-target="#deleteModel"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-header">Sanju</div>
+      <div class="card-body text-info ">Biopic of Sanjay  Datt</div>
+      <div class="card-footer">
+        <div class="float-left">
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star text-info"></span>
+          <span class="fa fa-star"></span>
+        </div>
+        <div class="float-right">
+          <i class="fa fa-pencil pr-1" data-toggle="modal" data-target="#editModel"></i>
+          <i class="fa fa-trash" data-toggle="modal" data-target="#deleteModel"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="addModel" tabindex="-1" role="dialog" aria-labelledby="addModelLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addModelLabel">Add Notes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="addTitle">Title</label>
+            <input type="text" class="form-control" id="addTitle" aria-describedby="titleHelp" placeholder="Enter title">
+          </div>
+            <div class="form-group">
+              <textarea class="form-control" id="descTextarea" rows="3"></textarea>
+            </div>
+          <div class="form-group">
+            <label for="inputRatings">Ratings</label>
+            <select id="inputRatings" class="form-control">
+              <option selected>Select</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="inputTags">Tags</label>
+            <select id="inputTags" class="form-control">
+              <option selected>Select</option>
+              <option>Books</option>
+              <option>Films</option>
+              <option>Others</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="modal fade" id="editModel" tabindex="-1" role="dialog" aria-labelledby="editModelLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModelLabel">Edit Notes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="ediTitle">Title</label>
+            <input type="text" class="form-control" id="ediTitle" aria-describedby="titleHelp" placeholder="Enter title">
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" id="editTextarea" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="editRatings">Ratings</label>
+            <select id="editRatings" class="form-control">
+              <option selected>Select</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="editTags">Tags</label>
+            <select id="editTags" class="form-control">
+              <option selected>Select</option>
+              <option>Books</option>
+              <option>Films</option>
+              <option>Others</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="modal fade" id="deleteModel" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModelLabel">Delete Notes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+         <span> Are you sure you want to delete?</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Delete changes</button>
+      </div>
+    </div>
+  </div>
+
+</div>
