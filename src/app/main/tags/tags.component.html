@@ -1,6 +1,5 @@
 <h2 class="mb-4">Tags</h2>
 <div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action">Books</a>
-  <a href="#" class="list-group-item list-group-item-action">Films</a>
-  <a href="#" class="list-group-item list-group-item-action">Others</a>
+  <a href="#" class="list-group-item list-group-item-action" 
+   *ngFor='let tag of tagList'>{{tag.name}}</a>
 </div>
