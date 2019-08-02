@@ -1,0 +1,36 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "title": "Five Point SomeOne",
+      "description": "Nice Book by Chetan Bhagat",
+      "ratings": 4,
+      "tagId": 1
+    },
+    {
+      "id": 2,
+      "title": "3 Mistakes Of My Life",
+      "description": "Nice Book by Chetan Bhagat",
+      "ratings": 5,
+      "tagId": 1
+    }
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "tagname": "Books"
+    },
+    {
+      "id": 2,
+      "tagname": "Films"
+    },
+    {
+      "id": 3,
+      "tagname": "Others"
+    },
+    {
+      "tagname": "Private Passwords",
+      "id": 4
+    }
+  ]
+}
