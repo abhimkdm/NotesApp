@@ -1,3 +1,4 @@
 export interface Itag {
-    name : string;
+    id: number,
+    tagname : string;
 }

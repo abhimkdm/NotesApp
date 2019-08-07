@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Itag } from "../models/Itag.interface";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -7,12 +9,11 @@ import { Itag } from "../models/Itag.interface";
 
 export class TagsService {
 
-    constructor() { }
+    private baseUrl : string = 'http://localhost:3000/tags';
 
-    get() : Itag[] {
-        return [{ 'name': 'Books' }, 
-                { 'name': 'Films' }, 
-                { 'name': 'Others' }]
-        //console.log("Tag Service Is Called");
+    constructor(private _http : HttpClient) { }
+
+    get() : Observable<Itag[]> {
+     return this._http.get<Itag[]>(this.baseUrl);
     }
 }

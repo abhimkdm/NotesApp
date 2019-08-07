@@ -5,6 +5,7 @@ import { SharedModule } from './Examples/shared.module';
 import { NavComponent } from './main/nav/nav.component';
 import { TagsComponent } from './main/tags/tags.component';
 import { NotesComponent } from './main/notes/notes.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { NotesComponent } from './main/notes/notes.component';
   ],
   imports: [
     BrowserModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
