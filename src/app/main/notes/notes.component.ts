@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NotesService } from '../services/notes.service';
+import { Inotes } from '../models/Inotes.interface';
 
 @Component({
   selector: 'note-notes',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotesComponent implements OnInit {
 
-  constructor() { }
+  public notesList : Inotes[];
+
+  constructor(private ns : NotesService) { }
 
   ngOnInit() {
+    this.ns.getNotes().subscribe(data=> this.bind(data))
   }
 
+  bind(data : Inotes[]){
+    this.notesList = data;
+  }
 }

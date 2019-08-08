@@ -14,6 +14,7 @@ export class TagsComponent implements OnInit {
 
   ngOnInit() {
    this._tagsService.get().subscribe(data => this.initData(data));
+  // this._tagsService.asyncData().subscribe(data => console.log(data));
   }
 
   initData(data : Itag[]) {
