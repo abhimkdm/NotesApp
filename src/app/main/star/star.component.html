@@ -1,5 +1,5 @@
-<span class="fa fa-star text-info"></span>
-<span class="fa fa-star text-info"></span>
-<span class="fa fa-star text-info"></span>
-<span class="fa fa-star text-info"></span>
-<span class="fa fa-star"></span>
+<span *ngFor="let star of colorStars" [class]="colorStar"></span>
+<span *ngFor="let star of blackStars" [class]="blackStar"></span>
+
+<!-- <span *ngFor="let dummy of ' '.repeat(ratings).split('')" class="fa fa-star text-info"></span>
+<span *ngFor="let dummy of ' '.repeat(5-ratings).split('')" class="fa fa-star"></span> -->

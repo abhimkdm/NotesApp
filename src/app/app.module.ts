@@ -1,13 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { SharedModule } from './Examples/shared.module';
-import { NavComponent } from './main/nav/nav.component';
-import { TagsComponent } from './main/tags/tags.component';
-import { NotesComponent } from './main/notes/notes.component';
-import { HttpClientModule } from '@angular/common/http';
-import { StarComponent } from './main/star/star.component';
-
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { AppComponent } from "./app.component";
+import { SharedModule } from "./Examples/shared.module";
+import { NavComponent } from "./main/nav/nav.component";
+import { TagsComponent } from "./main/tags/tags.component";
+import { NotesComponent } from "./main/notes/notes.component";
+import { HttpClientModule } from "@angular/common/http";
+import { StarComponent } from "./main/star/star.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -15,14 +15,10 @@ import { StarComponent } from './main/star/star.component';
     NavComponent,
     TagsComponent,
     NotesComponent,
-    StarComponent
+    StarComponent,
   ],
-  imports: [
-    BrowserModule,
-    SharedModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, SharedModule, HttpClientModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
