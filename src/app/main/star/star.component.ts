@@ -16,6 +16,6 @@ export class StarComponent implements OnChanges {
     this.colorStars = Array(this.ratings).fill(1);
     this.blackStars = Array(5 - this.ratings).fill(0);
 
-    console.log(this.ratings);
+    //console.log(this.ratings);
   }
 }

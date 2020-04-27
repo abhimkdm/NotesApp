@@ -1,18 +1,21 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Inotes } from '../models/Inotes.interface';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { Inotes } from "../models/Inotes.interface";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class NotesService {
+  baseUrl: string = "http://localhost:3000/notes";
 
-  baseUrl : string = "http://localhost:3000/notes";
+  constructor(private _http: HttpClient) {}
 
-  constructor(private _http : HttpClient) { }
-
-  getNotes() : Observable<Inotes[]> {
+  getNotes(): Observable<Inotes[]> {
     return this._http.get<Inotes[]>(this.baseUrl);
+  }
+
+  postNotes(notes: Inotes): Observable<Inotes> {
+    return this._http.post<Inotes>(this.baseUrl, notes);
   }
 }

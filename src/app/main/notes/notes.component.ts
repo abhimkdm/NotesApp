@@ -11,7 +11,7 @@ import { notes } from "../models/notes.model";
 export class NotesComponent implements OnInit {
   public notesList: Inotes[];
   public notes: notes = new notes();
-
+  public searchTitle: string;
   constructor(private ns: NotesService) {}
 
   ngOnInit() {
@@ -23,6 +23,12 @@ export class NotesComponent implements OnInit {
   }
 
   addNotes(data: Inotes) {
-    console.table(data);
+    data.ratings = parseInt(data.ratings.toString());
+    data.tagId = parseInt(data.tagId.toString());
+    this.ns.postNotes(data).subscribe((data) => console.log(data));
+  }
+
+  logDetails(control: any) {
+    console.log(control);
   }
 }

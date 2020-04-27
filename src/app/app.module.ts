@@ -8,6 +8,7 @@ import { NotesComponent } from "./main/notes/notes.component";
 import { HttpClientModule } from "@angular/common/http";
 import { StarComponent } from "./main/star/star.component";
 import { FormsModule } from "@angular/forms";
+import { SearchPipe } from './main/filter/search.pipe';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FormsModule } from "@angular/forms";
     TagsComponent,
     NotesComponent,
     StarComponent,
+    SearchPipe,
   ],
   imports: [BrowserModule, SharedModule, HttpClientModule, FormsModule],
   providers: [],

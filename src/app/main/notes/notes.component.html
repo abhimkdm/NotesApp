@@ -6,6 +6,7 @@
       value=""
       class="form-control form-control-lg"
       placeholder="Search notes... "
+      [(ngModel)]="searchTitle"
     />
   </div>
   <div class="col-sm-2">
@@ -21,7 +22,7 @@
 </div>
 <br />
 <div class="row">
-  <div class="col-sm-4" *ngFor="let note of notesList">
+  <div class="col-sm-4" *ngFor="let note of notesList | search: searchTitle">
     <div class="card">
       <div class="card-header">{{ note.title }}</div>
       <div class="card-body text-info">{{ note.description }}</div>
@@ -83,7 +84,14 @@
               placeholder="Enter title"
               [(ngModel)]="notes.title"
               required
+              (change)="logDetails(titleFC)"
             />
+            <small
+              class="form-text text-muted"
+              *ngIf="titleFC.touched && !titleFC.valid"
+            >
+              Please Enter Title.
+            </small>
           </div>
           <div class="form-group">
             <textarea
@@ -165,6 +173,7 @@
           class="btn btn-primary"
           [disabled]="!notesForm.form.valid"
           (click)="addNotes(notes)"
+          data-dismiss="modal"
         >
           Save changes
         </button>
