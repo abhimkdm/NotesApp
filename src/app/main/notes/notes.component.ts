@@ -12,6 +12,7 @@ export class NotesComponent implements OnInit {
   public notesList: Inotes[];
   public notes: notes = new notes();
   public searchTitle: string;
+  public idBackup: number = 0;
   constructor(private ns: NotesService) {}
 
   ngOnInit() {
@@ -25,7 +26,24 @@ export class NotesComponent implements OnInit {
   addNotes(data: Inotes) {
     data.ratings = parseInt(data.ratings.toString());
     data.tagId = parseInt(data.tagId.toString());
-    this.ns.postNotes(data).subscribe((data) => console.log(data));
+    this.ns.postNotes(data).subscribe((data) => this.notesRefresh(data));
+  }
+
+  notesRefresh(data: Inotes) {
+    this.notesList.push(data);
+  }
+
+  deleteNotes(id: number) {
+    this.idBackup = id == 0 ? this.idBackup : id;
+    if (id == 0) {
+      this.ns
+        .deleteNotes(this.idBackup)
+        .subscribe((data) => this.refreshAfterDelete());
+    }
+  }
+
+  refreshAfterDelete() {
+    this.notesList = this.notesList.filter((d) => d.id != this.idBackup);
   }
 
   logDetails(control: any) {

@@ -18,4 +18,8 @@ export class NotesService {
   postNotes(notes: Inotes): Observable<Inotes> {
     return this._http.post<Inotes>(this.baseUrl, notes);
   }
+
+  deleteNotes(id: number): Observable<any> {
+    return this._http.delete(this.baseUrl + "/" + id);
+  }
 }

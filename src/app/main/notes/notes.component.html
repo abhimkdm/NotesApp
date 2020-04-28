@@ -23,7 +23,7 @@
 <br />
 <div class="row">
   <div class="col-sm-4" *ngFor="let note of notesList | search: searchTitle">
-    <div class="card">
+    <div class="card mt-4">
       <div class="card-header">{{ note.title }}</div>
       <div class="card-body text-info">{{ note.description }}</div>
       <div class="card-footer">
@@ -41,6 +41,7 @@
             class="fa fa-trash"
             data-toggle="modal"
             data-target="#deleteModel"
+            (click)="deleteNotes(note.id)"
           ></i>
         </div>
       </div>
@@ -85,12 +86,20 @@
               [(ngModel)]="notes.title"
               required
               (change)="logDetails(titleFC)"
+              minlength="3"
+              maxlength="20"
             />
             <small
               class="form-text text-muted"
               *ngIf="titleFC.touched && !titleFC.valid"
             >
-              Please Enter Title.
+              <small *ngIf="titleFC.errors.required">
+                Please Enter Title.
+              </small>
+              <small *ngIf="titleFC.errors.minlength">
+                Please Enter Min Of
+                {{ titleFC.errors.minlength.requiredLength }} CHAR.
+              </small>
             </small>
           </div>
           <div class="form-group">
@@ -102,7 +111,15 @@
               class="form-control"
               rows="3"
               required
+              minlength="3"
+              maxlength="200"
             ></textarea>
+            <small
+              class="form-text text-muted"
+              *ngIf="descFC.touched && !descFC.valid"
+            >
+              Please Enter Description.
+            </small>
           </div>
           <div class="form-group">
             <label for="inputRatings">Ratings</label>
@@ -113,14 +130,22 @@
               ngModel
               #ratingFC="ngModel"
               [(ngModel)]="notes.ratings"
+              required
+              (change)="logDetails(ratingFC)"
             >
-              <option value="0" selected>Select</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              <option value="" selected>Select</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
             </select>
+            <small
+              class="form-text text-muted"
+              *ngIf="ratingFC.touched && !ratingFC.valid"
+            >
+              Please Select Rating.
+            </small>
           </div>
           <div class="form-group">
             <label for="inputTags">Tags</label>
@@ -131,12 +156,19 @@
               ngModel
               #tagsFC="ngModel"
               [(ngModel)]="notes.tagId"
+              required
             >
-              <option value="0" selected>Select</option>
+              <option value="" selected>Select</option>
               <option value="1">Books</option>
               <option value="2">Films</option>
               <option value="3">Others</option>
             </select>
+            <small
+              class="form-text text-muted"
+              *ngIf="tagsFC.touched && !tagsFC.valid"
+            >
+              Please Select Tag.
+            </small>
           </div>
           <!-- <p>Values</p>
           <p>"Form Group : " {{ notesForm.value | json }}</p>
@@ -280,7 +312,14 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary">Delete changes</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="deleteNotes(0)"
+          data-dismiss="modal"
+        >
+          Delete changes
+        </button>
       </div>
     </div>
   </div>

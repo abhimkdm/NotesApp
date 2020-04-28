@@ -13,13 +13,6 @@
       "description": "Nice Book by Chetan Bhagat",
       "ratings": 5,
       "tagId": 1
-    },
-    {
-      "title": "Something new",
-      "description": "Something new",
-      "ratings": 2,
-      "tagId": 1,
-      "id": 7
     }
   ],
   "tags": [
