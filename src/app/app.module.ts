@@ -8,7 +8,9 @@ import { NotesComponent } from "./main/notes/notes.component";
 import { HttpClientModule } from "@angular/common/http";
 import { StarComponent } from "./main/star/star.component";
 import { FormsModule } from "@angular/forms";
-import { SearchPipe } from './main/filter/search.pipe';
+import { SearchPipe } from "./main/filter/search.pipe";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastrModule } from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -19,7 +21,18 @@ import { SearchPipe } from './main/filter/search.pipe';
     StarComponent,
     SearchPipe,
   ],
-  imports: [BrowserModule, SharedModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    SharedModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: "toast-top-center",
+      preventDuplicates: true,
+    }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

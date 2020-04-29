@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { NotesService } from "../services/notes.service";
 import { Inotes } from "../models/Inotes.interface";
 import { notes } from "../models/notes.model";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "note-notes",
@@ -13,7 +14,8 @@ export class NotesComponent implements OnInit {
   public notes: notes = new notes();
   public searchTitle: string;
   public idBackup: number = 0;
-  constructor(private ns: NotesService) {}
+
+  constructor(private ns: NotesService, private toastrService: ToastrService) {}
 
   ngOnInit() {
     this.ns.getNotes().subscribe((data) => this.bind(data));
@@ -30,6 +32,7 @@ export class NotesComponent implements OnInit {
   }
 
   notesRefresh(data: Inotes) {
+    this.toastrService.success("New Notes Has Been Added.", "Success");
     this.notesList.push(data);
   }
 
@@ -44,6 +47,7 @@ export class NotesComponent implements OnInit {
 
   refreshAfterDelete() {
     this.notesList = this.notesList.filter((d) => d.id != this.idBackup);
+    this.toastrService.warning("Notes Has Been Deleted.", "Success");
   }
 
   logDetails(control: any) {
