@@ -1,0 +1,29 @@
+<div class="container">
+  <fieldset>
+    <legend>Notes Login</legend>
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          aria-describedby="emailHelp"
+          name="email"
+          [(ngModel)]="_loginUI.email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="_loginUI.password"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="login(_loginUI)">
+        Login
+      </button>
+    </form>
+  </fieldset>
+</div>

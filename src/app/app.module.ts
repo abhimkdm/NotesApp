@@ -11,6 +11,17 @@ import { FormsModule } from "@angular/forms";
 import { SearchPipe } from "./main/filter/search.pipe";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule } from "ngx-toastr";
+import { LoginComponent } from "./main/login/login.component";
+import { DashboardComponent } from "./main/dashboard/dashboard.component";
+import { RouterModule, Routes } from "@angular/router";
+import { PagenotfoundComponent } from "./main/pagenotfound/pagenotfound.component";
+
+const appRoutes: Routes = [
+  { path: "", redirectTo: "/login", pathMatch: "full" },
+  { path: "login", component: LoginComponent },
+  { path: "dashboard", component: DashboardComponent },
+  { path: "**", component: PagenotfoundComponent },
+];
 
 @NgModule({
   declarations: [
@@ -20,6 +31,9 @@ import { ToastrModule } from "ngx-toastr";
     NotesComponent,
     StarComponent,
     SearchPipe,
+    LoginComponent,
+    DashboardComponent,
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +46,7 @@ import { ToastrModule } from "ngx-toastr";
       positionClass: "toast-top-center",
       preventDuplicates: true,
     }),
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [],
   bootstrap: [AppComponent],
