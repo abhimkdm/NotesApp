@@ -22,4 +22,12 @@ export class NotesService {
   deleteNotes(id: number): Observable<any> {
     return this._http.delete(this.baseUrl + "/" + id);
   }
+
+  putNotes(notes: Inotes): Observable<Inotes> {
+    return this._http.put<Inotes>(this.baseUrl + "/" + notes.id, notes);
+  }
+
+  getNote(id: number): Observable<any> {
+    return this._http.get<Inotes>(this.baseUrl + "/" + id);
+  }
 }
