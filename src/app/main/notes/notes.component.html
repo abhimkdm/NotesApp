@@ -86,7 +86,6 @@
               placeholder="Enter title"
               [(ngModel)]="notes.title"
               required
-              (change)="logDetails(titleFC)"
               minlength="3"
               maxlength="20"
             />
@@ -116,17 +115,17 @@
               maxlength="200"
             ></textarea>
             <small
-            class="form-text text-muted"
-            *ngIf="descFC.touched && !descFC.valid"
-          >
-            <small *ngIf="descFC.errors.required" class="text-danger">
-              Please Enter Description.
+              class="form-text text-muted"
+              *ngIf="descFC.touched && !descFC.valid"
+            >
+              <small *ngIf="descFC.errors.required" class="text-danger">
+                Please Enter Description.
+              </small>
+              <small *ngIf="descFC.errors.minlength" class="text-danger">
+                Please Enter Min Of
+                {{ descFC.errors.minlength.requiredLength }} CHAR.
+              </small>
             </small>
-            <small *ngIf="descFC.errors.minlength" class="text-danger">
-              Please Enter Min Of
-              {{ titleFC.errors.minlength.requiredLength }} CHAR.
-            </small>
-          </small>
           </div>
           <div class="form-group">
             <label for="inputRatings">Ratings</label>
@@ -138,7 +137,6 @@
               #ratingFC="ngModel"
               [(ngModel)]="notes.ratings"
               required
-              (change)="logDetails(ratingFC)"
             >
               <option value="" selected>Select</option>
               <option value="1">1</option>
@@ -149,12 +147,14 @@
             </select>
             <small
               class="form-text text-muted"
-              *ngIf="ratingFC.touched && !ratingFC.valid" class="text-danger"
+              *ngIf="ratingFC.touched && !ratingFC.valid"
+              class="text-danger"
             >
               Please Select Rating.
             </small>
           </div>
           <div class="form-group">
+            <!-- ToDo 06:  Get the Tag values from db.json -->
             <label for="inputTags">Tags</label>
             <select
               id="inputTags"
@@ -208,11 +208,11 @@
           Close
         </button>
         <button
-        data-dismiss="modal"
+          data-dismiss="modal"
           type="button"
           class="btn btn-primary"
           [disabled]="!notesForm.form.valid"
-          (click)="addNotes(notes,notesForm)"
+          (click)="addNotes(notes)"
         >
           Save changes
         </button>
@@ -223,7 +223,6 @@
 <div
   class="modal fade"
   id="editModel"
-
   tabindex="-1"
   role="dialog"
   aria-labelledby="editModelLabel"
@@ -243,7 +242,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form #notesForm="ngForm">
+        <form #notesEditForm="ngForm">
           <div class="form-group">
             <label for="editTitle">Title</label>
             <input
@@ -253,7 +252,6 @@
               class="form-control"
               id="addTitle"
               name="title"
-
               aria-describedby="titleHelp"
               placeholder="Enter title"
               [(ngModel)]="editnotes.title"
@@ -281,24 +279,23 @@
               [(ngModel)]="editnotes.description"
               name="description"
               class="form-control"
-
               rows="3"
               required
               minlength="3"
               maxlength="200"
             ></textarea>
             <small
-            class="form-text text-muted"
-            *ngIf="descFC.touched && !descFC.valid"
-          >
-            <small *ngIf="descFC.errors.required" class="text-danger">
-              Please Enter Description.
+              class="form-text text-muted"
+              *ngIf="descFC.touched && !descFC.valid"
+            >
+              <small *ngIf="descFC.errors.required" class="text-danger">
+                Please Enter Description.
+              </small>
+              <small *ngIf="descFC.errors.minlength" class="text-danger">
+                Please Enter Min Of
+                {{ titleFC.errors.minlength.requiredLength }} CHAR.
+              </small>
             </small>
-            <small *ngIf="descFC.errors.minlength" class="text-danger">
-              Please Enter Min Of
-              {{ titleFC.errors.minlength.requiredLength }} CHAR.
-            </small>
-          </small>
           </div>
           <div class="form-group">
             <label for="editRatings">Ratings</label>
@@ -320,8 +317,8 @@
               <option value="5">5</option>
             </select>
             <small
-              class="form-text text-muted"
-              *ngIf="ratingFC.touched && !ratingFC.valid" class="text-danger"
+              class="form-text text-danger"
+              *ngIf="ratingFC.touched && !ratingFC.valid"
             >
               Please Select Rating.
             </small>
@@ -343,13 +340,12 @@
               <option value="3">Others</option>
             </select>
             <small
-              class="form-text text-muted text-danger"
+              class="form-text text-danger"
               *ngIf="tagsFC.touched && !tagsFC.valid"
             >
               Please Select Tag.
             </small>
           </div>
-
         </form>
       </div>
       <div class="modal-footer">
@@ -357,10 +353,10 @@
           Close
         </button>
         <button
-        data-dismiss="modal"
+          data-dismiss="modal"
           type="button"
           class="btn btn-primary"
-          [disabled]="!notesForm.form.valid"
+          [disabled]="!notesEditForm.form.valid"
           (click)="updateNotes(editnotes)"
         >
           Save changes

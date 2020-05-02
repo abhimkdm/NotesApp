@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { NotesService } from "../services/notes.service";
 import { Inotes } from "../models/Inotes.interface";
 import { notes } from "../models/notes.model";
 import { ToastrService } from "ngx-toastr";
-import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: "note-notes",
@@ -16,8 +15,7 @@ export class NotesComponent implements OnInit {
   public searchTitle: string;
   public idBackup: number = 0;
   public editnotes: notes = new notes();
-
-  @ViewChild('notesForm') formValues; // Added this
+  //ToDo 05: Add Properties to manage Edit/Add notes data.
 
   constructor(private ns: NotesService, private toastrService: ToastrService) {}
 
@@ -30,15 +28,9 @@ export class NotesComponent implements OnInit {
   }
 
   addNotes(data: Inotes) {
-
     data.ratings = parseInt(data.ratings.toString());
     data.tagId = parseInt(data.tagId.toString());
-
-      this.ns.postNotes(data).subscribe((data) => this.notesRefresh(data));
-      this.formValues.resetForm(); // Added this
-
-  //  form.reset();
-
+    this.ns.postNotes(data).subscribe((data) => this.notesRefresh(data));
   }
 
   notesRefreshUpdate(data: Inotes) {
@@ -47,13 +39,17 @@ export class NotesComponent implements OnInit {
     this.notesList.forEach((element, index) => {
       if (element.id === data.id) {
         this.notesList[index] = data;
-      };
+      }
     });
+    //ToDo 02: Filter data based on id.
+    //ToDo 03: Update the notesList.
+    //ToDo 04: Make One UI Referesh Method.
   }
 
   notesRefresh(data: Inotes) {
     this.toastrService.success("New Notes Has Been Added.", "Success");
     this.notesList.push(data);
+    this.clearForm();
   }
 
   deleteNotes(id: number) {
@@ -74,23 +70,22 @@ export class NotesComponent implements OnInit {
     console.log(control);
   }
 
-  clearForm(form: any) {
-    form.reset();
-    }
+  clearForm() {
+    this.notes = new notes();
+  }
 
-    getNote(id: any) {
-      this.ns
-      .getNote(id)
-      .subscribe((data) => this.refreshAfterGet(data));
-    }
+  getNote(id: any) {
+    //ToDo 01 : Based on id filter the 'notesList' get the note bind to  this.editnotes.
+    this.ns.getNote(id).subscribe((data) => this.refreshAfterGet(data));
+  }
 
-    refreshAfterGet(data: Inotes) {
-      this.editnotes = data;
-    }
+  refreshAfterGet(data: Inotes) {
+    this.editnotes = data;
+  }
 
-    updateNotes(data: Inotes) {
-      data.ratings = parseInt(data.ratings.toString());
-      data.tagId = parseInt(data.tagId.toString());
-      this.ns.putNotes(data).subscribe((data) => this.notesRefreshUpdate(data));
-    }
+  updateNotes(data: Inotes) {
+    data.ratings = parseInt(data.ratings.toString());
+    data.tagId = parseInt(data.tagId.toString());
+    this.ns.putNotes(data).subscribe((data) => this.notesRefreshUpdate(data));
+  }
 }
