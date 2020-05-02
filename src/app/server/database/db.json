@@ -4,8 +4,8 @@
       "id": 1,
       "title": "Five Point SomeOne",
       "description": "Nice Book by Chetan Bhagat",
-      "ratings": 4,
-      "tagId": 1
+      "ratings": 3,
+      "tagId": 2
     },
     {
       "id": 2,
@@ -13,6 +13,20 @@
       "description": "Nice Book by Chetan Bhagat",
       "ratings": 5,
       "tagId": 1
+    },
+    {
+      "title": "dghhg",
+      "description": "fdbdg",
+      "ratings": 1,
+      "tagId": 1,
+      "id": 3
+    },
+    {
+      "title": "nm vb",
+      "description": "vm",
+      "ratings": 1,
+      "tagId": 1,
+      "id": 6
     }
   ],
   "tags": [
@@ -27,6 +41,20 @@
     {
       "id": 3,
       "tagname": "Others"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "vinoda@gmail.com",
+      "password": "Manage",
+      "name": "Vinoda"
+    },
+    {
+      "id": 2,
+      "email": "test@gmail.com",
+      "password": "Test",
+      "name": "Test"
     }
   ]
 }

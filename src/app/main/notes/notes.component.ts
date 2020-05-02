@@ -3,6 +3,7 @@ import { NotesService } from "../services/notes.service";
 import { Inotes } from "../models/Inotes.interface";
 import { notes } from "../models/notes.model";
 import { ToastrService } from "ngx-toastr";
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: "note-notes",
@@ -14,6 +15,9 @@ export class NotesComponent implements OnInit {
   public notes: notes = new notes();
   public searchTitle: string;
   public idBackup: number = 0;
+  public editnotes: notes = new notes();
+
+  @ViewChild('notesForm') formValues; // Added this
 
   constructor(private ns: NotesService, private toastrService: ToastrService) {}
 
@@ -26,9 +30,25 @@ export class NotesComponent implements OnInit {
   }
 
   addNotes(data: Inotes) {
+
     data.ratings = parseInt(data.ratings.toString());
     data.tagId = parseInt(data.tagId.toString());
-    this.ns.postNotes(data).subscribe((data) => this.notesRefresh(data));
+
+      this.ns.postNotes(data).subscribe((data) => this.notesRefresh(data));
+      this.formValues.resetForm(); // Added this
+
+  //  form.reset();
+
+  }
+
+  notesRefreshUpdate(data: Inotes) {
+    this.toastrService.success("Notes Has Been Updated.", "Success");
+
+    this.notesList.forEach((element, index) => {
+      if (element.id === data.id) {
+        this.notesList[index] = data;
+      };
+    });
   }
 
   notesRefresh(data: Inotes) {
@@ -53,4 +73,24 @@ export class NotesComponent implements OnInit {
   logDetails(control: any) {
     console.log(control);
   }
+
+  clearForm(form: any) {
+    form.reset();
+    }
+
+    getNote(id: any) {
+      this.ns
+      .getNote(id)
+      .subscribe((data) => this.refreshAfterGet(data));
+    }
+
+    refreshAfterGet(data: Inotes) {
+      this.editnotes = data;
+    }
+
+    updateNotes(data: Inotes) {
+      data.ratings = parseInt(data.ratings.toString());
+      data.tagId = parseInt(data.tagId.toString());
+      this.ns.putNotes(data).subscribe((data) => this.notesRefreshUpdate(data));
+    }
 }
