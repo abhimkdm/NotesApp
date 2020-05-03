@@ -34,7 +34,7 @@
           <i
             class="fa fa-pencil pr-1"
             data-toggle="modal"
-            data-target="#editModel"
+            data-target="#addModel"
             (click)="getNote(note.id)"
           ></i>
 
@@ -60,8 +60,12 @@
 >
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addModelLabel">Add Notes</h5>
+      <div
+        class="modal-header"
+        [(ngModel)]="isUpdate"
+        *ngIf="isUpdate; else editModule"
+      >
+        <h5 class="modal-title" id="addModelLabel">Edit Notes</h5>
         <button
           type="button"
           class="close"
@@ -71,6 +75,19 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <ng-template #editModule>
+        <div class="modal-header">
+          <h5 class="modal-title" id="addModelLabel">Add Notes</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </ng-template>
       <div class="modal-body">
         <form #notesForm="ngForm">
           <div class="form-group">
@@ -203,7 +220,23 @@
           </p> -->
         </form>
       </div>
-      <div class="modal-footer">
+      <ng-template #editButton>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button
+            data-dismiss="modal"
+            type="button"
+            class="btn btn-primary"
+            [disabled]="!notesForm.form.valid"
+            (click)="addNotes(notes)"
+          >
+            Save changes
+          </button>
+        </div>
+      </ng-template>
+      <div class="modal-footer" *ngIf="isUpdate; else editButton">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Close
         </button>
@@ -212,7 +245,7 @@
           type="button"
           class="btn btn-primary"
           [disabled]="!notesForm.form.valid"
-          (click)="addNotes(notes)"
+          (click)="updateNotes(notes)"
         >
           Save changes
         </button>
@@ -220,7 +253,7 @@
     </div>
   </div>
 </div>
-<div
+<!--<div
   class="modal fade"
   id="editModel"
   tabindex="-1"
@@ -364,7 +397,7 @@
       </div>
     </div>
   </div>
-</div>
+</div>-->
 <div
   class="modal fade"
   id="deleteModel"

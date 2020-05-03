@@ -8,6 +8,7 @@ import { UsersService } from '../services/users.service';
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.css"],
 })
+
 export class LoginComponent {
   _login: loginmodel = new loginmodel();
   _loginUI: loginmodel = new loginmodel();
@@ -27,14 +28,13 @@ export class LoginComponent {
     this.userList = data;
 
   }
-  login(data: loginmodel) {
-    //Todo: Email & Password to redirect to dashboard
 
+  login(data: loginmodel) {
     this.userList.forEach((element) => {
       if (element.email == data.email && element.password == data.password) {
         this.route.navigateByUrl("/dashboard");
       };
     });
-
   }
+
 }
