@@ -4,7 +4,7 @@
       "id": 1,
       "title": "Five Point SomeOne",
       "description": "Nice Book by Chetan Bhagat",
-      "ratings": 3,
+      "ratings": 5,
       "tagId": 2
     },
     {
@@ -22,16 +22,9 @@
       "id": 3
     },
     {
-      "title": "nm vb",
-      "description": "vm",
-      "ratings": 1,
-      "tagId": 1,
-      "id": 6
-    },
-    {
-      "title": "Something",
-      "description": "Something",
-      "ratings": 2,
+      "title": "SomethingSomethingDe",
+      "description": "DeleteDeleteDelete",
+      "ratings": 4,
       "tagId": 1,
       "id": 7
     },
@@ -41,13 +34,6 @@
       "ratings": 2,
       "tagId": 2,
       "id": 8
-    },
-    {
-      "title": "Something02",
-      "description": "Something02",
-      "ratings": 2,
-      "tagId": 2,
-      "id": 9
     }
   ],
   "tags": [
