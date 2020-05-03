@@ -3,14 +3,13 @@ import { NotesService } from "../services/notes.service";
 import { Inotes } from "../models/Inotes.interface";
 import { notes } from "../models/notes.model";
 import { ToastrService } from "ngx-toastr";
-import { element } from "@angular/core/src/render3/instructions";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "note-notes",
   templateUrl: "./notes.component.html",
   styleUrls: ["./notes.component.css"],
 })
-
 export class NotesComponent implements OnInit {
   public notesList: Inotes[];
   public notes: notes = new notes();
@@ -22,20 +21,28 @@ export class NotesComponent implements OnInit {
   public delete: string = "DELETE";
   public isUpdate: boolean = false;
 
-  constructor(private ns: NotesService, private toastrService: ToastrService) { }
+  constructor(
+    private ns: NotesService,
+    private toastrService: ToastrService,
+    private activatedRouted: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.ns.getNotes().subscribe((data) => this.bind(data));
+    //ToDo 01: Fiter the notes based on tagid. if tagid=0 then we should show all the notes.
+    //ToDo 02: Avoid Page Referesh after selecting the Tags.
+    console.log(this.activatedRouted.snapshot.parent.paramMap.get("tagid"));
   }
 
   bind(data: Inotes[]) {
     this.notesList = data;
   }
 
+  /** CRUD OPERATIONS */
   /**
-       * Add new notes
-       * @param data
-       */
+   * Add new notes
+   * @param data
+   */
   addNotes(data: Inotes) {
     data.ratings = parseInt(data.ratings.toString());
     data.tagId = parseInt(data.tagId.toString());
@@ -49,7 +56,9 @@ export class NotesComponent implements OnInit {
   updateNotes(data: Inotes) {
     data.ratings = parseInt(data.ratings.toString());
     data.tagId = parseInt(data.tagId.toString());
-    this.ns.putNotes(data).subscribe((data) => this.notesRefresh(data, "UPDATE"));
+    this.ns
+      .putNotes(data)
+      .subscribe((data) => this.notesRefresh(data, "UPDATE"));
   }
 
   /**
@@ -70,9 +79,8 @@ export class NotesComponent implements OnInit {
    * @param id
    */
   getNote(id: any) {
-    this.notesList.filter(item => {
-      if (item.id == id)
-        this.notes = item;
+    this.notesList.filter((item) => {
+      if (item.id == id) this.notes = item;
     });
     this.isUpdate = true;
   }
@@ -89,7 +97,9 @@ export class NotesComponent implements OnInit {
       this.clearForm();
     } else if (operation == this.update) {
       this.toastrService.success("Notes Has Been Updated.", "Success");
-      this.notesList[this.notesList.findIndex(item => item.id == data.id)] = data
+      this.notesList[
+        this.notesList.findIndex((item) => item.id == data.id)
+      ] = data;
       this.clearForm();
     } else {
       this.toastrService.warning("Notes Has Been Deleted.", "Success");
@@ -108,5 +118,4 @@ export class NotesComponent implements OnInit {
     this.notes = new notes();
     this.isUpdate = false;
   }
-
 }

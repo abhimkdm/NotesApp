@@ -19,7 +19,16 @@ import { PagenotfoundComponent } from "./main/pagenotfound/pagenotfound.componen
 const appRoutes: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
   { path: "login", component: LoginComponent },
-  { path: "dashboard", component: DashboardComponent },
+  {
+    path: "dashboard/:tagid",
+    component: DashboardComponent,
+    children: [
+      {
+        path: "notes",
+        component: NotesComponent,
+      },
+    ],
+  },
   { path: "**", component: PagenotfoundComponent },
 ];
 
