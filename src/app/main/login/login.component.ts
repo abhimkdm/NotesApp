@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy, OnChanges } from "@angular/core";
 import { loginmodel } from "../models/login.model";
 import { Router } from "@angular/router";
 import { UsersService } from "../services/users.service";
@@ -8,7 +8,7 @@ import { UsersService } from "../services/users.service";
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.css"],
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy, OnInit, OnChanges {
   _login: loginmodel = new loginmodel();
   _loginUI: loginmodel = new loginmodel();
   public userList: loginmodel[];
@@ -33,5 +33,17 @@ export class LoginComponent {
         this.route.navigateByUrl("/dashboard/0/notes");
       }
     });
+  }
+
+  ngOnChanges(): void {
+    console.log("Login ngOnChanges Called");
+  }
+
+  ngOnInit(): void {
+    console.log("Login ngOnInit Called");
+  }
+
+  ngOnDestroy(): void {
+    console.log("Login ngOnDestroy Called");
   }
 }

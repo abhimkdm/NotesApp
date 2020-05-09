@@ -26,5 +26,4 @@ export class NotesService {
   putNotes(notes: Inotes): Observable<Inotes> {
     return this._http.put<Inotes>(this.baseUrl + "/" + notes.id, notes);
   }
-
 }
