@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, OnChanges } from "@angular/core";
 import { loginmodel } from "../models/login.model";
 import { Router } from "@angular/router";
 import { UsersService } from "../services/users.service";
+import { LoginService } from "../services/login.service";
 
 @Component({
   selector: "note-login",
@@ -12,8 +13,13 @@ export class LoginComponent implements OnDestroy, OnInit, OnChanges {
   _login: loginmodel = new loginmodel();
   _loginUI: loginmodel = new loginmodel();
   public userList: loginmodel[];
+  _loginName: string;
 
-  constructor(private _usersService: UsersService, private route: Router) {
+  constructor(
+    private _usersService: UsersService,
+    private _loginService: LoginService,
+    private route: Router
+  ) {
     this._login = {
       id: 1,
       email: "vinoda@gmail.com",
@@ -40,6 +46,7 @@ export class LoginComponent implements OnDestroy, OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    this._loginName = this._loginService.LoginName;
     console.log("Login ngOnInit Called");
   }
 

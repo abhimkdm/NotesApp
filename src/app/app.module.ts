@@ -15,6 +15,7 @@ import { LoginComponent } from "./main/login/login.component";
 import { DashboardComponent } from "./main/dashboard/dashboard.component";
 import { RouterModule, Routes } from "@angular/router";
 import { PagenotfoundComponent } from "./main/pagenotfound/pagenotfound.component";
+import { SharedComponent } from './main/shared/shared.component';
 
 const appRoutes: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
     LoginComponent,
     DashboardComponent,
     PagenotfoundComponent,
+    SharedComponent,
   ],
   imports: [
     BrowserModule,
