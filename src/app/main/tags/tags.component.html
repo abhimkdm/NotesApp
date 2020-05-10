@@ -1,10 +1,23 @@
 <h2 class="mb-4">Tags</h2>
 <div class="list-group">
-  <a href="/dashboard/0/notes" class="list-group-item list-group-item-action"
+  <!-- <a (click)="goTo(0)" class="list-group-item list-group-item-action"
     >All Notes</a
   >
   <a
-    href="/dashboard/{{ tag.id }}/notes"
+    (click)="goTo(tag.id)"
+    class="list-group-item list-group-item-action"
+    *ngFor="let tag of tagList"
+    >{{ tag.tagname }}</a
+  > -->
+
+  <!-- ToDo : Write a custom directive to manage active tags -->
+  <a
+    [routerLink]="['/dashboard/0/notes']"
+    class="list-group-item list-group-item-action"
+    >All Notes</a
+  >
+  <a
+    routerLink="/dashboard/{{ tag.id }}/notes"
     class="list-group-item list-group-item-action"
     *ngFor="let tag of tagList"
     >{{ tag.tagname }}</a

@@ -227,10 +227,10 @@
           </button>
           <button
             data-dismiss="modal"
-            type="button"
+            type="submit"
             class="btn btn-primary"
             [disabled]="!notesForm.form.valid"
-            (click)="addNotes(notes)"
+            (click)="addNotes(notes, notesForm)"
           >
             Save changes
           </button>
@@ -242,10 +242,10 @@
         </button>
         <button
           data-dismiss="modal"
-          type="button"
+          type="submit"
           class="btn btn-primary"
           [disabled]="!notesForm.form.valid"
-          (click)="updateNotes(notes)"
+          (click)="updateNotes(notes, notesForm)"
         >
           Save changes
         </button>

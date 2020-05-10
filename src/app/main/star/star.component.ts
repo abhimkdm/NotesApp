@@ -15,15 +15,15 @@ export class StarComponent implements OnChanges, OnInit, OnDestroy {
   ngOnChanges(): void {
     this.colorStars = Array(this.ratings).fill(1);
     this.blackStars = Array(5 - this.ratings).fill(0);
-    console.log("Star ngOnChanges Called");
+    //console.log("Star ngOnChanges Called");
     //console.log(this.ratings);
   }
 
   ngOnInit(): void {
-    console.log("Star ngOnInit Called");
+    //console.log("Star ngOnInit Called");
   }
 
   ngOnDestroy(): void {
-    console.log("Star ngOnDestroy Called");
+    //console.log("Star ngOnDestroy Called");
   }
 }

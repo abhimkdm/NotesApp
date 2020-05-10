@@ -4,6 +4,7 @@ import { Inotes } from "../models/Inotes.interface";
 import { notes } from "../models/notes.model";
 import { ToastrService } from "ngx-toastr";
 import { ActivatedRoute } from "@angular/router";
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: "note-notes",
@@ -20,6 +21,7 @@ export class NotesComponent implements OnInit {
   public update: string = "UPDATE";
   public delete: string = "DELETE";
   public isUpdate: boolean = false;
+  public paramId: number = 0;
 
   constructor(
     private ns: NotesService,
@@ -31,7 +33,10 @@ export class NotesComponent implements OnInit {
     this.ns.getNotes().subscribe((data) => this.bind(data));
     //ToDo 01: Fiter the notes based on tagid. if tagid=0 then we should show all the notes.
     //ToDo 02: Avoid Page Referesh after selecting the Tags.
-    console.log(this.activatedRouted.snapshot.parent.paramMap.get("tagid"));
+    //console.log(this.activatedRouted.snapshot.parent.paramMap.get("tagid"));
+    this.activatedRouted.parent.params.subscribe((d) => {
+      this.paramId = d.tagid;
+    });
   }
 
   bind(data: Inotes[]) {
@@ -43,22 +48,26 @@ export class NotesComponent implements OnInit {
    * Add new notes
    * @param data
    */
-  addNotes(data: Inotes) {
+  addNotes(data: Inotes, notesForm: NgForm) {
     data.ratings = parseInt(data.ratings.toString());
     data.tagId = parseInt(data.tagId.toString());
-    this.ns.postNotes(data).subscribe((data) => this.notesRefresh(data, "ADD"));
+    this.ns.postNotes(data).subscribe((data) => {
+      this.notesRefresh(data, "ADD");
+      notesForm.form.reset();
+    });
   }
 
   /**
    * Update existing notes
    * @param data
    */
-  updateNotes(data: Inotes) {
+  updateNotes(data: Inotes, notesForm: NgForm) {
     data.ratings = parseInt(data.ratings.toString());
     data.tagId = parseInt(data.tagId.toString());
-    this.ns
-      .putNotes(data)
-      .subscribe((data) => this.notesRefresh(data, "UPDATE"));
+    this.ns.putNotes(data).subscribe((data) => {
+      this.notesRefresh(data, "UPDATE");
+      notesForm.form.reset();
+    });
   }
 
   /**
